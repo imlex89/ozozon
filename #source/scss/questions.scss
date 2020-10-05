@@ -1,0 +1,97 @@
+$j: center;
+$c: center;
+$w: wrap;
+
+@mixin jcw($j, $c, $w) {
+  display: flex;
+  justify-content: $j;
+  align-items: $c;
+  flex-wrap: $w;
+}
+
+.questions {
+	background-color: #f8f8f8;
+	.container {
+		width: 100%;
+		max-width: 1080px;
+	}
+	.active_btn {
+		color: #4bd0e4;
+	}
+	&__body {
+		padding: 58px 0 70px 0;
+	}
+	&__columns {
+		@include jcw($j, $c, $w);
+		margin: 0px -20px;
+		figure {
+			@include jcw(space-between, $c, $w);
+			width: 334px;
+			height: 116px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			background-color: #ffffff;
+			padding: 0 20px 0 51px;
+			margin: 52px 19px 0;
+			&:last-of-type {
+				padding: 0 22px 0 60px;
+			}
+			p {
+				color: #000;
+				&:hover,
+				&:focus {
+					color: #4bd0e4;
+					@extend %transition;
+				}
+			}
+			a {
+				color: #000;
+				font-size: 18px;
+				font-weight: 400;
+			}
+		}
+	}
+	&__question {
+		@include jcw(space-between, flex-start, nowrap);
+		width: 100%;
+		height: auto;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+		border-radius: 10px;
+		background-color: #ffffff;
+		padding: 35px 140px 33px 116px;
+		margin-top: 42px;
+		ul {
+			&:first-of-type {
+				width: 360px;
+			}
+			&:last-of-type {
+				width: 372px;
+			}
+			li {
+				a {
+					color: #000;
+					font-size: 15px;
+					font-weight: 300;
+					line-height: 1.875rem;
+					border-bottom: 1px dashed;
+					&:hover,
+					&:focus {
+						color: #4bd0e4;
+						border: none;
+						@extend %transition;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.questions {
+		&__question {
+			justify-content: center;
+			flex-wrap: wrap;
+			padding: 1rem;
+		}
+	}
+}

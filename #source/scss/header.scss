@@ -1,0 +1,119 @@
+$j: center;
+$c: center;
+$w: wrap;
+
+@mixin jcw($j, $c, $w) {
+  display: flex;
+  justify-content: $j;
+  align-items: $c;
+  flex-wrap: $w;
+}
+
+.header {
+	position: relative;
+	z-index: 1;
+	padding: 40px 37px 0 46px;
+	width: 100%;
+	&__body {
+		@include jcw(space-between, $c, $w);
+	}
+	&__logo {
+	}
+	&__left {
+		@include jcw($j, flex-end, nowrap);
+	}
+	&__right {
+		@include jcw($j, $c, nowrap);
+		padding-left: 2rem;
+		a {
+			color: #f6ff00;
+			font-family: "MyriadPro";
+			font-size: 16px;
+			font-weight: 400;
+			margin-right: 41px;
+		}
+		button {
+			background: none;
+			width: 128px;
+			height: 34px;
+			border-radius: 17px;
+			border: 2px solid #ffffff;
+			opacity: 0.7;
+			color: #ffffff;
+			font-size: 14px;
+			font-weight: 400;
+			letter-spacing: 0.35px;
+			&:hover {
+				background-color: #6fe0f2;
+				opacity: 1;
+				@extend %transition;
+			}
+		}
+	}
+	&__menu {
+		width: 589px;
+		margin-left: 64px;
+		ul {
+			@include jcw(space-between, $c, $w);
+			li {
+				a {
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 12px;
+				}
+			}
+		}
+	}
+	&__call {
+		position: relative;
+		top: 43px;
+		right: 14px;
+		div {
+			@include jcw($j, $c, $w);
+			width: 70px;
+		    height: 70px;
+		    background-color: #6fe0f1;
+		    opacity: 0.9;
+		    border-radius: 50%;
+		    position: absolute;
+		    right: 0;
+		    &:hover {
+		    	box-shadow: inset 0 0 10px 0px;
+		    	@extend %transition;
+		    }
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.header {
+		&__body {
+			justify-content: center;
+		}
+		&__right {
+			padding: 2rem;
+		}
+		&__call {
+			top: -1rem;
+			right: 2rem;
+		}
+	}
+}
+@media (max-width: 767px) {
+	.header {
+		&__menu {
+			display: none;
+		}
+		&__right {
+			display: block;
+			margin-right: -2rem;
+			padding: 0;
+			button {
+				margin: 1rem 0;
+			}
+		}
+		&__call {
+			top: 1rem;
+		}
+	}
+}
